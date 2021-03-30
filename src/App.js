@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <div>
         <Navbar bg="light">
-          <Navbar.Brand>CreateD3App</Navbar.Brand>
+          <Navbar.Brand>Scatterplot</Navbar.Brand>
         </Navbar>
         <Container>
           <Row>
