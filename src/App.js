@@ -4,7 +4,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { json } from 'd3'
-
+import Table from './Table'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import ChartWrapper from './ChartWrapper';
 
 class App extends Component {
@@ -38,7 +39,7 @@ class App extends Component {
         <Container>
           <Row>
             <Col md={6} xs={12}>{this.renderChart()}</Col>
-            <Col md={6} xs={12}></Col>
+            <Col md={6} xs={12}> <Table data={this.state.data} /> </Col>
           </Row>
         </Container>
       </div>
