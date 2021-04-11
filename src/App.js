@@ -23,6 +23,8 @@ class App extends Component {
       .catch(error => console.log(error))
   }
 
+  updateData = (data) => this.setState({ data })
+
   renderChart() {
     if (this.state.data.length == 0) {
       return "No data yet"
@@ -39,7 +41,7 @@ class App extends Component {
         <Container>
           <Row>
             <Col md={6} xs={12}>{this.renderChart()}</Col>
-            <Col md={6} xs={12}> <Table data={this.state.data} /> </Col>
+            <Col md={6} xs={12}> <Table data={this.state.data} updateDate={this.updateData}/> </Col>
           </Row>
         </Container>
       </div>
