@@ -5,8 +5,9 @@ const WIDTH = 500 - MARGIN.LEFT - MARGIN.RIGHT
 const HEIGHT = 300 - MARGIN.TOP - MARGIN.BOTTOM
 
 class D3Chart {
-	constructor(element, data) {
+	constructor(element, data, updateName) {
 		let vis = this
+		vis.updateName = updateName
 
 		vis.g = d3.select(element)
 			.append("svg")
@@ -76,6 +77,7 @@ class D3Chart {
 			.attr("cx", d => vis.x(d.age))
 			.attr("r", 5)  // "r" is radius
 			.attr("fill", "grey")
+			.on("click", d => vis.updateName(d.name))
 			.transition(1000)
 				.attr("cy", d => vis.y(d.height))
 	

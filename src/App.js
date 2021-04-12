@@ -10,7 +10,8 @@ import ChartWrapper from './ChartWrapper';
 
 class App extends Component {
   state = {
-    data: []
+    data: [],
+    activeName: null
   }
   
   componentDidMount() {
@@ -23,13 +24,23 @@ class App extends Component {
       .catch(error => console.log(error))
   }
 
+  updateName = (activeName) => {
+    this.setState({
+      activeName: activeName
+    })
+  }
+
   updateData = (data) => this.setState({ data })
 
   renderChart() {
     if (this.state.data.length == 0) {
       return "No data yet"
     }
-    return <ChartWrapper data={this.state.data}/>
+    return <ChartWrapper 
+      data={this.state.data} 
+      updateName={this.updateName}
+      activeName={this.state.activeName}
+    />
   }
   
   render() {
@@ -41,7 +52,13 @@ class App extends Component {
         <Container>
           <Row>
             <Col md={6} xs={12}>{this.renderChart()}</Col>
-            <Col md={6} xs={12}> <Table data={this.state.data} updateData={this.updateData}/> </Col>
+            <Col md={6} xs={12}> 
+              <Table 
+                data={this.state.data}  
+                updateData={this.updateData}
+                activeName={this.state.activeName}
+              /> 
+            </Col>
           </Row>
         </Container>
       </div>
