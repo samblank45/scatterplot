@@ -41,7 +41,7 @@ class App extends Component {
         <Container>
           <Row>
             <Col md={6} xs={12}>{this.renderChart()}</Col>
-            <Col md={6} xs={12}> <Table data={this.state.data} updateDate={this.updateData}/> </Col>
+            <Col md={6} xs={12}> <Table data={this.state.data} updateData={this.updateData}/> </Col>
           </Row>
         </Container>
       </div>

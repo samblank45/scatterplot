@@ -7,12 +7,33 @@ import Form from 'react-bootstrap/Form'
 
 export default class Table extends React.Component {
 
+  state = {
+    name: "",
+    height: "",
+    age: ""
+  }
+
+  handleSubmit = () => {
+    this.props.updateData([...this.props.data, this.state])
+    this.setState({
+      name: "",
+      height: "",
+      age: ""
+    })
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value 
+    })
+  }
+
   handleRemove = (event) => {
     const newData = this.props.data.filter(item => {
       // event.target.name
       return item.name != event.target.name
     })
-    this.props.updateDate(newData)
+    this.props.updateData(newData)
   }
 
   renderRows = () => {
@@ -57,18 +78,24 @@ export default class Table extends React.Component {
             <Form.Control 
               placeholder={"Name"}
               name={"name"}
+              value={this.state.name}
+              onChange={this.handleChange}
             />
           </Col>
           <Col xs={3}>
             <Form.Control 
               placeholder={"Height"}
-              name={"height"}       
+              name={"height"}  
+              value={this.state.height}   
+              onChange={this.handleChange}  
             />
           </Col>
           <Col xs={3}>
             <Form.Control 
               placeholder={"Age"}
-              name={"age"}            
+              name={"age"} 
+              value={this.state.age}  
+              onChange={this.handleChange}         
             />
           </Col>
           <Col>
@@ -76,6 +103,7 @@ export default class Table extends React.Component {
               variant={"primary"}
               type={"button"}
               style={{ width: "100%"}}
+              onClick={this.handleSubmit}
             >
               Add
             </Button>

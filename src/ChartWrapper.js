@@ -10,9 +10,9 @@ const ChartWrapper = ({data}) => {
 			setChart(new D3Chart(chartArea.current, data))
 		}
 		else {
-			chart.update()
+			chart.update(data)
 		}
-	}, [chart])
+	}, [data], [chart])
 
 	return (
 		<div className="chart-area" ref={chartArea}></div>
