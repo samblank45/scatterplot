@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import D3Chart from './D3Chart';
 
-const ChartWrapper = ({data, updateName, activeName}) => {
+const ChartWrapper = ({data, updateName}) => {
 	const chartArea = useRef(null)
 	const [chart, setChart] = useState(null)
 
@@ -12,7 +12,7 @@ const ChartWrapper = ({data, updateName, activeName}) => {
 		else {
 			chart.update(data)
 		}
-	},  [data], [activeName], [chart])
+	}, [chart, data, updateName])
 
 	return (
 		<div className="chart-area" ref={chartArea}></div>

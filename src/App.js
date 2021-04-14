@@ -24,22 +24,17 @@ class App extends Component {
       .catch(error => console.log(error))
   }
 
-  updateName = (activeName) => {
-    this.setState({
-      activeName: activeName
-    })
-  }
+  updateName = (activeName) => this.setState({ activeName })
 
   updateData = (data) => this.setState({ data })
 
   renderChart() {
     if (this.state.data.length == 0) {
-      return "No data yet"
+      return "No data yet" 
     }
     return <ChartWrapper 
       data={this.state.data} 
       updateName={this.updateName}
-      activeName={this.state.activeName}
     />
   }
   
